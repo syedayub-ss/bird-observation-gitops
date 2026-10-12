@@ -1,0 +1,21 @@
+server:
+  replicas: 1
+  service:
+    type: ClusterIP
+  ingress:
+    enabled: false
+
+repoServer:
+  replicas: 1
+
+controller:
+  replicas: 1
+
+redis-ha:
+  enabled: false
+
+redis:
+  enabled: true
+
+dex:
+  enabled: false
