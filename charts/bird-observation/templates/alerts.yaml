@@ -1,0 +1,45 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: bird-observation-alerts
+  labels:
+    release: monitoring
+spec:
+  groups:
+    - name: bird-observation.health
+      rules:
+        - alert: BirdBackendUnavailable
+          expr: |
+            kube_deployment_status_replicas_available{
+              namespace="bird-observation",
+              deployment="backend"
+            } < 1
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Bird Observation backend has no ready replicas"
+
+        - alert: BirdFrontendUnavailable
+          expr: |
+            kube_deployment_status_replicas_available{
+              namespace="bird-observation",
+              deployment="frontend"
+            } < 1
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Bird Observation frontend has no ready replicas"
+
+        - alert: BirdMongoDBUnavailable
+          expr: |
+            kube_statefulset_status_replicas_ready{
+              namespace="bird-observation",
+              statefulset="mongodb"
+            } < 1
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Bird Observation MongoDB has no ready replicas"
