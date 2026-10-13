@@ -3,3 +3,7 @@ frontend:
 
 backend:
   replicas: 1
+
+ingress:
+  enabled: true
+  allowedCidr: "81.99.219.210/32"
