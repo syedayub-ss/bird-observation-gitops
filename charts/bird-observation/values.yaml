@@ -2,14 +2,14 @@ frontend:
   replicas: 1
   image:
     repository: syedayub/bird-frontend
-    tag: "a34efee7cae4cd8fe73090393c19117fd7ac3ba6-11"
+    tag: "a34efee7cae4cd8fe73090393c19117fd7ac3ba6-12"
   port: 8080
 
 backend:
   replicas: 1
   image:
     repository: syedayub/bird-backend
-    tag: "a34efee7cae4cd8fe73090393c19117fd7ac3ba6-11"
+    tag: "a34efee7cae4cd8fe73090393c19117fd7ac3ba6-12"
   port: 5000
   existingSecret: bird-backend-secrets
   uploads:
