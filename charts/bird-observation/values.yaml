@@ -23,3 +23,7 @@ mongodb:
   storage:
     size: 10Gi
     storageClass: bird-gp3
+
+ingress:
+  enabled: false
+  allowedCidr: "81.99.219.210/32"
